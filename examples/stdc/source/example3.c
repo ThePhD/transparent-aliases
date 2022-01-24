@@ -9,8 +9,9 @@ _Alias truncated_zzz = truncated_zzz; // constraint violation: cannot change
                                       // function declaration
                                       // to function alias
 _Alias valid_sleep_alias = zzz;
-int valid_sleep_alias(int requested_sleep_time); // constraint violation:
-                                                 // redeclaring function alias
+int valid_sleep_alias(double requested_sleep_time); // constraint violation:
+                                                    // redeclaring function alias
+                                                    // with incompatible type
 
 int x;
 _Alias xa = x;
