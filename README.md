@@ -1,3 +1,9 @@
 # Transparent Aliases for C
 
-This repository contains examples and tests for Transparent Aliases in C (WG14 Document N2901).
+This repository contains examples and tests for [Transparent Aliases in C (WG14 Document N2901)](https://thephd.dev/_vendor/future_cxx/papers/C%20-%20Transparent%20Function%20Aliases.html). The implementation can be played with over at [https://godbolt.org](https://godbolt.org/z/6Mhq9PYr6).
+
+The goal of transparent function aliases is to provide a **zero-overhead**, **compile-time** level of indirection that allows a function to be given a different name that it's resulting symbol in libraries and executables, while simply being a renaming capacity for non-binary implementations.
+
+The ultimate goal of Transparent Aliases is to allow for function declarations of a given name to keep working while they are silently upgraded by C Librarians (both C Standard Librarians and Normal Librarians). There are a number of examples in this repository that serve to test this theory, and as of right now all of the tests for determining if the Application Binary Interface (ABI) of a Shared Object / DLL on Windows, *Nix, and MacOS platforms show that it works.
+
+Upgrading ABI is [critical to the future of C on many platforms (September 2021 Presentation to WG14 - Standard C Committee)](https://thephd.dev/_presentations/standards/C/2021%20September%20Virtual/n2796/Transparent%20Function%20Aliases%20and%20the%20Future.html#/), and since it will be a long time before there is a revolutionary break in both source and binary code for integer sizes, pointer widths, and more, it behooves us to now learn how to properly upgrade our libraries. It produces no extra symbols or data as compared to a by-hand, macro-based implementation of the same and has several benefits over a macro approach, such as featuring having proper scopes and respecting shadowing rules where macros do not.

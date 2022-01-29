@@ -23,6 +23,12 @@ target_link_libraries(app_new.lib_new
 	PRIVATE
 	my_libc.new
 )
+set_target_properties(app_new.lib_new
+	PROPERTIES
+	SKIP_BUILD_RPATH FALSE
+	BUILD_RPATH [=[${ORIGIN}]=]
+	INSTALL_RPATH "${CMAKE_INSTALL_LIBDIR}"
+)
 
 # we indicate success by saying it was "skipped"
 # weird, I know, but it's just how we have to do until
