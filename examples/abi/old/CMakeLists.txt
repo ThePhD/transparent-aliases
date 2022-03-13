@@ -1,4 +1,6 @@
-add_library(my_libc.old SHARED ../my_libc/source/maxabs.c)
+add_library(my_libc.old SHARED
+	../my_libc/source/maxabs.c
+)
 target_common_options(my_libc.old)
 target_compile_definitions(my_libc.old
 	PRIVATE
@@ -30,7 +32,4 @@ set_target_properties(app_old.lib_old
 	INSTALL_RPATH "${CMAKE_INSTALL_LIBDIR}"
 )
 
-# we indicate success by saying it was "skipped"
-# weird, I know, but it's just how we have to do until
-# we get a better CMake command, lmao
 add_test(NAME app_old.lib_old COMMAND app_old.lib_old)

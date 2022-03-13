@@ -1,4 +1,7 @@
-add_library(my_libc.new SHARED ../my_libc/source/maxabs.c)
+add_library(my_libc.new SHARED
+	../my_libc/source/maxabs.c
+	../my_libc/source/maxabs.new.c
+)
 target_common_options(my_libc.new)
 target_compile_definitions(my_libc.new
 	PRIVATE
@@ -30,9 +33,6 @@ set_target_properties(app_new.lib_new
 	INSTALL_RPATH "${CMAKE_INSTALL_LIBDIR}"
 )
 
-# we indicate success by saying it was "skipped"
-# weird, I know, but it's just how we have to do until
-# we get a better CMake command, lmao
 add_test(NAME app_new.lib_new COMMAND app_new.lib_new)
 
 # we need to effectively transplant the old executable here and pretend like everything is peachy-okay!
